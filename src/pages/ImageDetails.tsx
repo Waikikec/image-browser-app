@@ -1,24 +1,12 @@
 import { Avatar, Box, Button, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { fetchImages } from '../services/pixabayService';
-import { Image } from '../types';
+import useImages from '../hooks/useImages';
 
 const ImageDetails = () => {
-  const [images, setImages] = useState<Image[]>([]);
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const fetchData = async () => {
-    const images = await fetchImages({ query: 'yellow flowers' });
-
-    setImages(images);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+  const { images } = useImages({});
   const image = images.find((img) => img.id.toString() === id);
 
   if (!image) {

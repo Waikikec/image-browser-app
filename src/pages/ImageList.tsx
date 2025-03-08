@@ -1,21 +1,17 @@
-import { Grid2, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
+import { useState } from 'react';
 import ImageCard from '../components/ImageCard';
-import { fetchImages } from '../services/pixabayService';
-import { Image } from '../types';
+import SearchBar from '../components/SearchBar';
+import useImages from '../hooks/useImages';
 
 const ImageList = () => {
-  const [images, setImages] = useState<Image[]>([]);
+  const [searchText, setSearchText] = useState<string>('');
+  const { images, isLoading, error, loadMore } = useImages({
+    query: searchText,
+    safesearch: true,
+  });
 
-  const fetchData = async () => {
-    const images = await fetchImages({ query: 'yellow flowers' });
-
-    setImages(images);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  console.log('Rendering ImageList with searchText:', searchText);
 
   return (
     <div>
@@ -23,18 +19,34 @@ const ImageList = () => {
         Pixabay Image Browser
       </Typography>
 
+      <SearchBar value={searchText} onChange={setSearchText} />
+
       <Typography variant="body1">
         Click on an image to view its details.
       </Typography>
 
-      <Grid2 container spacing={2}>
-        {/* Image details go here */}
-        {images.map((img) => (
-          <Grid2>
+      {isLoading && <CircularProgress />}
+
+      {error && <Typography color="error">Error fetching images.</Typography>}
+
+      <Grid container spacing={2}>
+        {images.map((img, index) => (
+          <Grid item key={`${img.id}-${index}`} xs={12} sm={6} md={4} lg={3}>
             <ImageCard image={img} />
-          </Grid2>
+          </Grid>
         ))}
-      </Grid2>
+      </Grid>
+
+      <Box my={2}>
+        <Button
+          variant="outlined"
+          fullWidth
+          loading={isLoading}
+          onClick={loadMore}
+        >
+          Load More
+        </Button>
+      </Box>
     </div>
   );
 };

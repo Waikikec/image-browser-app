@@ -25,7 +25,7 @@ export const fetchImages = async (
       category: params.category,
       page: params.page || 1,
       per_page: params.per_page || 20,
-      safesearch: params.safesearch || true,
+      safesearch: params.safesearch || false,
       image_type: 'photo',
     },
   });
