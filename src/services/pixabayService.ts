@@ -1,31 +1,8 @@
 import axios from 'axios';
+import { Image } from '../types';
 
 const API_KEY = import.meta.env.VITE_APP_PIXABAY_API_KEY;
 const BASE_URL = 'https://pixabay.com/api/';
-
-export interface Image {
-  id: number;
-  pageURL: string;
-  type: string;
-  tags: string;
-  previewURL: string;
-  previewWidth: number;
-  previewHeight: number;
-  webformatURL: string;
-  webformatWidth: number;
-  webformatHeight: number;
-  largeImageURL: string;
-  imageWidth: number;
-  imageHeight: number;
-  imageSize: number;
-  views: number;
-  downloads: number;
-  likes: number;
-  comments: number;
-  user_id: number;
-  user: string;
-  userImageURL: string;
-}
 
 export interface FetchImageParams {
   query?: string;
@@ -48,7 +25,7 @@ export const fetchImages = async (
       category: params.category,
       page: params.page || 1,
       per_page: params.per_page || 20,
-      safesearch: params.safesearch || false,
+      safesearch: params.safesearch || true,
       image_type: 'photo',
     },
   });
