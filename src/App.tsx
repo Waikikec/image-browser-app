@@ -1,31 +1,19 @@
-import { useEffect, useState } from 'react';
-import { fetchImages, Image } from './services/pixabayService';
+import { Container, CssBaseline } from '@mui/material';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import ImageDetails from './pages/ImageDetails';
+import ImageList from './pages/ImageList';
 
 function App() {
-  const [images, setImages] = useState<Image[]>([]);
-
-  const fetchData = async () => {
-    const images = await fetchImages({ query: 'yellow flowers' });
-    console.log('🚀 ~ App ~ images:', images);
-
-    setImages(images);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
-    <div>
-      <h1>Images</h1>
-      <ul>
-        {images.map((image) => (
-          <li key={image.id}>
-            <img src={image.previewURL} alt={image.tags} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <BrowserRouter>
+      <CssBaseline />
+      <Container maxWidth="lg">
+        <Routes>
+          <Route path="/" element={<ImageList />} />
+          <Route path="/details/:id" element={<ImageDetails />} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 }
 
