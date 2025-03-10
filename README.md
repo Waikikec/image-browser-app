@@ -2,6 +2,9 @@
 
 This project is a React application bootstrapped with Vite and TypeScript. It includes ESLint for code linting and formatting.
 
+![screencapture-localhost-5173-2025-03-10-11_47_10](https://github.com/user-attachments/assets/461bdcf1-a7d7-4aea-9a74-fc48a9eac4a9)
+![screencapture-localhost-5173-details-9449638-2025-03-10-11_47_34](https://github.com/user-attachments/assets/502fd63b-9643-41da-8004-d27e9082ddef)
+
 ## Getting Started
 
 ### Prerequisites
@@ -66,11 +69,11 @@ The project uses ESLint for linting and formatting. You can expand the ESLint co
 
 ### Improvements
 
-- Add centralized state to keep track of the application state, such as search and filter criteria, so that when navigating to a specific image and returning, the search state is preserved.
+- Add a centralized state to keep track of the application state, such as search and filter criteria, so that when navigating to a specific image and returning, the search state is preserved.
 - Improve the user interface with a more modern design and better responsiveness.
 - Integrate additional image sources or APIs for a wider variety of images.
 - Implement a CI/CD pipeline using GitHub Actions.
-- Add unit tests using a testing library like Jest.
+- Add more unit tests using a testing library.
 - Add more comprehensive documentation for components and utilities.
 
 ## License
