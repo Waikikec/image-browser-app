@@ -60,10 +60,33 @@ const ImageDetails = () => {
 
   return (
     <Box sx={{ maxWidth: 900, mx: 'auto', p: 2 }}>
-      {/* Back Button */}
-      <Button onClick={() => navigate(-1)} sx={{ mb: 2 }}>
-        <ArrowBack />
-      </Button>
+      <Grid
+        container
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ mb: 2 }}
+      >
+        {/* Back Button */}
+        <Grid item>
+          <Button onClick={() => navigate(-1)}>
+            <ArrowBack />
+          </Button>
+        </Grid>
+
+        {/* User Information */}
+        <Grid item>
+          <Box display="flex" alignItems="center">
+            <Avatar
+              src={image.userImageURL}
+              alt={image.user}
+              sx={{ width: 40, height: 40 }}
+            />
+            <Typography ml={2} variant="h6">
+              {image.user}
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
 
       {/* Image */}
       <Paper elevation={3} sx={{ mb: 2, overflow: 'hidden' }}>
@@ -90,40 +113,28 @@ const ImageDetails = () => {
         />
       </Box>
 
-      {/* User Information */}
-      <Box display="flex" alignItems="center" mb={2}>
-        <Avatar
-          src={image.userImageURL}
-          alt={image.user}
-          sx={{ width: 56, height: 56 }}
-        />
-        <Typography ml={2} variant="h6">
-          {image.user}
-        </Typography>
-      </Box>
-
       {/* Image Details */}
       <Grid container spacing={2}>
         <Grid item xs={6} sm={3}>
-          <Box display="flex" alignItems="center">
+          <Box display="flex">
             <Favorite color="error" sx={{ mr: 1 }} />
             <Typography variant="body1">{image.likes}</Typography>
           </Box>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Box display="flex" alignItems="center">
+          <Box display="flex">
             <Visibility color="action" sx={{ mr: 1 }} />
             <Typography variant="body1">{image.views}</Typography>
           </Box>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Box display="flex" alignItems="center">
+          <Box display="flex">
             <CloudDownload color="primary" sx={{ mr: 1 }} />
             <Typography variant="body1">{image.downloads}</Typography>
           </Box>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Box display="flex" alignItems="center">
+          <Box display="flex">
             <ChatBubbleOutline color="secondary" sx={{ mr: 1 }} />
             <Typography variant="body1">{image.comments}</Typography>
           </Box>

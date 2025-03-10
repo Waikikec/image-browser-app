@@ -46,10 +46,6 @@ const ImageList = () => {
 
   return (
     <div>
-      <Typography variant="h4" gutterBottom>
-        Pixabay Image Browser
-      </Typography>
-
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={12} sm={6} md={8} lg={10}>
           <SearchBar value={searchText} onChange={setSearchText} />
