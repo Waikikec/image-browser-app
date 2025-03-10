@@ -1,54 +1,78 @@
-# React + TypeScript + Vite
+# Image Browser App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React application bootstrapped with Vite and TypeScript. It includes ESLint for code linting and formatting.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## Expanding the ESLint configuration
+Make sure you have the following installed:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Node.js](https://nodejs.org/) (version 14 or higher)
+- [npm](https://www.npmjs.com/) (version 6 or higher) or [yarn](https://yarnpkg.com/)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/your-username/image-browser-app.git
+cd image-browser-app
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install the dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```sh
+npm install
+# or
+yarn install
 ```
+
+### Running the Development Server
+
+Start the development server:
+
+```sh
+npm run dev
+# or
+yarn dev
+```
+
+Open your browser and navigate to `http://localhost:5173/` to see the application running.
+
+### Building for Production
+
+To create a production build, run:
+
+```sh
+npm run build
+# or
+yarn build
+```
+
+The output will be in the `dist` directory.
+
+### Environment Variables
+
+Create a `.env` file in the root of your project to define environment variables:
+
+```sh
+VITE_APP_PIXABAY_API_KEY=your_pixabay_api_key_here
+```
+
+### ESLint Configuration
+
+The project uses ESLint for linting and formatting. You can expand the ESLint configuration as needed. See the existing configuration in `eslint.config.js`.
+
+### Improvements
+
+- Add centralized state to keep track of the application state, such as search and filter criteria, so that when navigating to a specific image and returning, the search state is preserved.
+- Improve the user interface with a more modern design and better responsiveness.
+- Integrate additional image sources or APIs for a wider variety of images.
+- Implement a CI/CD pipeline using GitHub Actions.
+- Add unit tests using a testing library like Jest.
+- Add more comprehensive documentation for components and utilities.
+
+## License
+
+This project is licensed under the MIT License.
