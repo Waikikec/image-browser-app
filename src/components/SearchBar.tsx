@@ -11,7 +11,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
   };
 
   return (
-    <Box my={2}>
+    <Box>
       <TextField
         label="Search Images"
         variant="outlined"

@@ -12,7 +12,6 @@ const useImages = (params: UseImagesProps) => {
   const [error, setError] = useState<string | null>(null);
 
   const loadImages = async () => {
-    console.log('Loading images for page:', page);
     setIsLoading(true);
     try {
       const images = await fetchImages(params);

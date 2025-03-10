@@ -21,3 +21,51 @@ export interface Image {
   user: string;
   userImageURL: string;
 }
+
+export const imageTypeOptions = ['all', 'photo', 'illustration', 'vector'];
+
+export const orientationOptions = ['all', 'horizontal', 'vertical'];
+
+export const categoryOptions = [
+  'backgrounds',
+  'fashion',
+  'nature',
+  'science',
+  'education',
+  'feelings',
+  'health',
+  'people',
+  'religion',
+  'places',
+  'animals',
+  'industry',
+  'computer',
+  'food',
+  'sports',
+  'transportation',
+  'travel',
+  'buildings',
+  'business',
+  'music',
+];
+
+export const colorOptions = [
+  'grayscale',
+  'transparent',
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'turquoise',
+  'blue',
+  'lilac',
+  'pink',
+  'white',
+  'gray',
+  'black',
+  'brown',
+];
+
+export const editorOptions = ['No', 'Yes'];
+
+export const orderOptions = ['popular', 'latest'];
