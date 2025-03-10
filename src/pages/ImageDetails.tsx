@@ -23,8 +23,22 @@ const ImageDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const { images } = useImages({});
+  const { images, isLoading } = useImages({ id });
+
   const image = images.find((img) => img.id.toString() === id);
+
+  if (isLoading) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
+        <Typography variant="h6">Loading...</Typography>
+      </Box>
+    );
+  }
 
   if (!image) {
     return (

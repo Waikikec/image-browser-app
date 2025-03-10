@@ -6,6 +6,7 @@ const BASE_URL = 'https://pixabay.com/api/';
 
 export interface FetchImageParams {
   query?: string;
+  id?: string;
   image_type?: string;
   orientation?: string;
   category?: string | null;
@@ -27,6 +28,7 @@ export const fetchImages = async (
     params: {
       key: API_KEY,
       q: params.query,
+      id: params.id,
       image_type: params.image_type,
       orientation: params.orientation,
       category: params.category,

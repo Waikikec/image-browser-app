@@ -22,6 +22,8 @@ import {
 
 const ImageList = () => {
   const [searchText, setSearchText] = useState<string>('');
+
+  const [query, setQuery] = useState<string>('');
   const [imageType, setImageType] = useState<string>(imageTypeOptions[0]);
   const [orientation, setOrientation] = useState<string>(orientationOptions[0]);
   const [category, setCategory] = useState<string | null>(null);
@@ -30,15 +32,17 @@ const ImageList = () => {
   const [order, setOrder] = useState<string>(orderOptions[0]);
 
   const { images, isLoading, error, loadMore } = useImages({
-    query: searchText,
+    query,
     safesearch: true,
     image_type: imageType,
     orientation,
     category,
     colors,
-    editors_choice: editorsChoice === 'Yes' ? true : false,
+    editors_choice: editorsChoice === 'Yes',
     order,
   });
+
+  const handleSearch = () => setQuery(searchText);
 
   return (
     <div>
@@ -46,7 +50,22 @@ const ImageList = () => {
         Pixabay Image Browser
       </Typography>
 
-      <SearchBar value={searchText} onChange={setSearchText} />
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs={12} sm={6} md={8} lg={10}>
+          <SearchBar value={searchText} onChange={setSearchText} />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={2}>
+          <Button
+            size="large"
+            variant="outlined"
+            fullWidth
+            onClick={handleSearch}
+            sx={{ padding: 1.7 }}
+          >
+            Search
+          </Button>
+        </Grid>
+      </Grid>
 
       <Grid container spacing={2} my={2}>
         <Grid item xs={12} sm={6} md={4} lg={2}>
@@ -134,7 +153,11 @@ const ImageList = () => {
         Click on an image to view its details.
       </Typography>
 
-      {isLoading && <CircularProgress />}
+      {isLoading && (
+        <Box display="flex" justifyContent="center" alignItems="center" my={4}>
+          <CircularProgress />
+        </Box>
+      )}
 
       {error && <Typography color="error">Error fetching images.</Typography>}
 
@@ -146,16 +169,18 @@ const ImageList = () => {
         ))}
       </Grid>
 
-      <Box my={2}>
-        <Button
-          variant="outlined"
-          fullWidth
-          loading={isLoading}
-          onClick={loadMore}
-        >
-          Load More
-        </Button>
-      </Box>
+      {!isLoading && images.length > 0 && (
+        <Box my={2}>
+          <Button
+            variant="outlined"
+            fullWidth
+            loading={isLoading}
+            onClick={loadMore}
+          >
+            Load More
+          </Button>
+        </Box>
+      )}
     </div>
   );
 };

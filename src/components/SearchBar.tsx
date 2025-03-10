@@ -6,10 +6,6 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ value, onChange }: SearchBarProps) => {
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value);
-  };
-
   return (
     <Box>
       <TextField
@@ -17,7 +13,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
         variant="outlined"
         fullWidth
         value={value}
-        onChange={handleOnChange}
+        onChange={(event) => onChange(event.target.value)}
       />
     </Box>
   );
