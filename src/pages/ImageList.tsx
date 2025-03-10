@@ -155,7 +155,11 @@ const ImageList = () => {
         </Box>
       )}
 
-      {error && <Typography color="error">Error fetching images.</Typography>}
+      {error && (
+        <Typography color="error" id="error-message" title="error-message">
+          Error fetching images.
+        </Typography>
+      )}
 
       <Grid container spacing={2}>
         {images.map((img, index) => (
@@ -168,6 +172,7 @@ const ImageList = () => {
       {!isLoading && images.length > 0 && (
         <Box my={2}>
           <Button
+            id="load-more-button"
             variant="outlined"
             fullWidth
             loading={isLoading}

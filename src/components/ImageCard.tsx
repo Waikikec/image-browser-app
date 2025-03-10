@@ -20,7 +20,7 @@ const ImageCard = ({ image }: ImageCardProps) => {
   };
 
   return (
-    <Card>
+    <Card data-testid="image-card">
       <CardActionArea onClick={handleClick}>
         <CardMedia
           component="img"

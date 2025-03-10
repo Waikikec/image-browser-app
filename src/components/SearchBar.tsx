@@ -9,6 +9,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
   return (
     <Box>
       <TextField
+        data-testid="searchbar"
         label="Search Images"
         variant="outlined"
         fullWidth
